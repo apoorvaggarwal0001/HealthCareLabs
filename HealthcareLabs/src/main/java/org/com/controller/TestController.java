@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.com.dao.TestRepositories;
 import org.com.error.RecordNotFoundException;
+import org.com.model.Appointment;
 import org.com.model.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/test")
-
+@CrossOrigin("http://localhost:4200")
 public class TestController {
 	@Autowired
 	TestRepositories dao;
@@ -83,13 +84,31 @@ public class TestController {
 	}
 	
 	@PutMapping("/updateTest")
-	public String updateTest(@RequestBody Test test) {
-		Optional<Test> findById=dao.findById(test.getTestId());
-		if(findById.isPresent()) {
-			dao.save(test);
-			return "Test updated";
-		}
-		return "Test not present";
-	}
+    public ResponseEntity<Test> updateTest(@Valid @RequestBody Test test) {
+
+        Optional<Test> findById = dao.findById(test.getTestId());
+        try {
+            if (findById.isPresent()) {
+                dao.save(test);
+                return new ResponseEntity<Test>(test, HttpStatus.OK);
+            	} 
+            else {
+                throw new RecordNotFoundException("Test not present");
+            }
+        }
+        catch (RecordNotFoundException e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+	
+//	@PutMapping("/updateTest")
+//	public String updateTest(@RequestBody Test test) {
+//		Optional<Test> findById=dao.findById(test.getTestId());
+//		if(findById.isPresent()) {
+//			dao.save(test);
+//			return "Test updated";
+//		}
+//		return "Test not present";
+//	}
 
 }
