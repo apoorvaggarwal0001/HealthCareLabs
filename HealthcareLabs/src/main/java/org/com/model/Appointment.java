@@ -13,9 +13,8 @@ public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int appointmentId;
-	private int userId;
-	private int diagnosticCentreId;
-	private int testId;
+	private String diagnosticCentreName;
+	private String testName;
 	private String date1;
 	private String time1;
 	private float totalCost;
@@ -31,24 +30,7 @@ public class Appointment {
 	public void setAppointmentId(int appointmentId) {
 		this.appointmentId = appointmentId;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public int getDiagnosticCentreId() {
-		return diagnosticCentreId;
-	}
-	public void setDiagnosticCentreId(int diagnosticCentreId) {
-		this.diagnosticCentreId = diagnosticCentreId;
-	}
-	public int getTestId() {
-		return testId;
-	}
-	public void setTestId(int testId) {
-		this.testId = testId;
-	}
+	
 	public String getDate1() {
 		return date1;
 	}
@@ -73,18 +55,25 @@ public class Appointment {
 	public void setApproved(Boolean approved) {
 		this.approved = approved;
 	}
-	
-//	public DiagnosticCentre getDiagnosticCentre() {
-//		return diagnosticCentre;
-//	}
-//	public void setDiagnosticCentre(DiagnosticCentre diagnosticCentre) {
-//		this.diagnosticCentre = diagnosticCentre;
-//	}
-	@Override
-	public String toString() {
-		return "Appointment [appointmentId=" + appointmentId + ", userId=" + userId + ", testId=" + testId + ", date1="
-				+ date1 + ", time1=" + time1 + ", totalCost=" + totalCost + ", approved=" + approved + "]";
+	public String getDiagnosticCentreName() {
+		return diagnosticCentreName;
 	}
+	public void setDiagnosticCentreName(String diagnosticCentreName) {
+		this.diagnosticCentreName = diagnosticCentreName;
+	}
+	public String getTestName() {
+		return testName;
+	}
+	public void setTestName(String testName) {
+		this.testName = testName;
+	}
+	
+
+//	@Override
+//	public String toString() {
+//		return "Appointment [appointmentId=" + appointmentId + ", userId=" + userId + ", testId=" + testId + ", date1="
+//				+ date1 + ", time1=" + time1 + ", totalCost=" + totalCost + ", approved=" + approved + "]";
+//	}
 	
 	
 	
