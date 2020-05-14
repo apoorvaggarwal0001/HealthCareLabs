@@ -1,6 +1,6 @@
 export class MyAppointment{
     appointmentId: Number;
-	userId: Number;
+	// userId: Number;
 	diagnosticCentreId: Number;
 	testId: Number;
 	date1: String;

@@ -8,9 +8,11 @@ import { Observable } from 'rxjs';
 export class MytestService {
   private allUrl="http://localhost:9090/test/allTests";
   private saveUrl="http://localhost:9090/test/addTest";
+  private addTestIntoExistingDiagnosticCentreUrl="http://localhost:9090/test/addTest";
   private updateUrl="http://localhost:9090/test/updateTest";
   private deleteUrl="http://localhost:9090/test/deleteTest";
   private searchUrl="http://localhost:9090/test/searchTest";
+  private testCostUrl="http://localhost:9090/test/testCost";
   constructor(private http:HttpClient) { }
 
   getTestList():Observable<any>{
@@ -22,10 +24,16 @@ export class MytestService {
   saveTest(test: Object):Observable<Object>{
     return this.http.post(`${this.saveUrl}/`,test)
   }
+  addTestIntoExistingDiagnosticCentre(test: Object, id:Number):Observable<Object>{
+    return this.http.post(`${this.addTestIntoExistingDiagnosticCentreUrl}/${id}`,test)
+  }
   updateTest(test: Object):Observable<Object>{
     return this.http.put(`${this.updateUrl}/`,test)
   }
   removeTest(id: Number):Observable<any>{
     return this.http.delete(`${this.deleteUrl}/${id}`,{responseType:'text'})
+  }
+  testCost(id: Number):Observable<any>{
+    return this.http.get(`${this.testCostUrl}/${id}`)
   }
 }

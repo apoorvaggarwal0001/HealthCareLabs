@@ -30,9 +30,6 @@ public class AppointmentController {
 	@Autowired
 	AppointmentService appointmentService;
 	
-	@Autowired
-	AppointmentRepositories dao;
-	
 	@RequestMapping("/allAppointments")
 	public List<Appointment> getAllAppointments(){
 		return appointmentService.getAllAppointments();
@@ -59,6 +56,11 @@ public class AppointmentController {
     public ResponseEntity<Appointment> updateAppointment(@Valid @RequestBody Appointment appoint) {
 		return appointmentService.updateAppointment(appoint);
     }
+	
+	@RequestMapping("/diagnosticCentreName/{id}")
+	public String getDiagnosticCentreName(@PathVariable("id") Integer tid) {
+		return appointmentService.getDiagnosticCentreName(tid);
+	}
 
 }
 

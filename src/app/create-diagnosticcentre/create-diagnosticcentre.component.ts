@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MyDiagnosticCentre } from '../mydiagnosticcentre/mydiagnosticcentre';
 import { MydiagnosticcentreService } from '../mydiagnosticcentre/mydiagnosticcentre.service';
 import { Router } from '@angular/router';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-create-diagnosticcentre',
@@ -11,9 +12,13 @@ import { Router } from '@angular/router';
 export class CreateDiagnosticcentreComponent implements OnInit {
   diagnosticCentre: MyDiagnosticCentre=new MyDiagnosticCentre();
   submitted=false;
+  disable=true;
+  @Input() errors: ValidationErrors;
+  
   constructor(private service: MydiagnosticcentreService, private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(){

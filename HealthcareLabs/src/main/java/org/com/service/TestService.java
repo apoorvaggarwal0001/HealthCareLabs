@@ -80,4 +80,10 @@ public class TestService {
 		}
 	}
 	
+	public float getTestCost(Integer tid) {
+		Optional<Test> findById=testDao.findById(tid);
+			Test test=new Test();
+			test=findById.get();
+			return test.getTestCost();
+	}
 }

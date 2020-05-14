@@ -12,10 +12,14 @@ export class MydiagnosticcentreService {
   private updateUrl="http://localhost:9090/diagnosticCentre/updateDiagnosticCentre";
   private deleteUrl="http://localhost:9090/diagnosticCentre/deleteDiagnosticCentre";
   private searchUrl="http://localhost:9090/diagnosticCentre/searchDiagnosticCentre";
+  private searchTestUrl="http://localhost:9090/diagnosticCentre/allTestsInDiagnosticCentre";
   constructor(private http:HttpClient) {   }
   
    getDiagnosticCentreList():Observable<any>{
     return this.http.get(`${this.allUrl}`)
+  }
+  getAllTestsInDiagnosticCentre(id: Number):Observable<any>{
+    return this.http.get(`${this.searchTestUrl}/${id}`)
   }
   searchDiagnosticCentre(id: Number):Observable<any>{
     return this.http.get(`${this.searchUrl}/${id}`)

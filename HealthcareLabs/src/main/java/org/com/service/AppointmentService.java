@@ -3,23 +3,24 @@ package org.com.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.com.dao.AppointmentRepositories;
+import org.com.dao.DiagnosticCentreRepositories;
 import org.com.error.RecordNotFoundException;
 import org.com.model.Appointment;
+import org.com.model.DiagnosticCentre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class AppointmentService {
 	
 	@Autowired
 	AppointmentRepositories appointmentDao;
+	
+	@Autowired
+	DiagnosticCentreRepositories diagnosticCentreDao;
 	
 	public List<Appointment> getAllAppointments(){
 		return appointmentDao.findAll();
@@ -81,4 +82,13 @@ public class AppointmentService {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+	public String getDiagnosticCentreName(Integer tid) {
+		Optional<Appointment> findById=appointmentDao.findById(tid);
+			Appointment app=new Appointment();
+			app=findById.get();
+			Optional<DiagnosticCentre> findById2=diagnosticCentreDao.findById(app.getDiagnosticCentreId());
+			DiagnosticCentre dc=new DiagnosticCentre();
+			dc=findById2.get();
+			return dc.getCentreName();
+	}
 }

@@ -11,6 +11,7 @@ export class MyappointmentService {
   private updateUrl="http://localhost:9090/appoint/updateAppointment";
   private deleteUrl="http://localhost:9090/appoint/deleteAppointment";
   private searchUrl="http://localhost:9090/appoint/searchAppointment";
+  private getDiagnosticCentreNameUrl="http://localhost:9090/appoint/diagnosticCentreName";
   constructor(private http:HttpClient) { }
 
   getAppointmentList():Observable<any>{
@@ -27,5 +28,8 @@ export class MyappointmentService {
   }
   removeAppointment(id: Number):Observable<any>{
     return this.http.delete(`${this.deleteUrl}/${id}`,{responseType:'text'})
+  }
+  getDiagnosticCentreName(id: Number):Observable<any>{
+    return this.http.get(`${this.getDiagnosticCentreNameUrl}/${id}`)
   }
 }

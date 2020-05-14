@@ -1,21 +1,41 @@
-<h1>New Diagnostic Centre Form</h1>
-
+<div class="container">
+    <h1>New Diagnostic Centre Form</h1>
 <div [hidden]="submitted" style="width: 600px;">
-    <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
+    <form (ngSubmit)="onSubmit()" #dform="ngForm">
+        <!-- <div class="form-group">
             <label for="diagnosticCentreId" placeholder="id">Enter Diagnostic Centre Id</label>
             <input class="form-control" id="id" required [(ngModel)]="diagnosticCentre.diagnosticCentreId" name="diagnosticCentreId">
-        </div>
+        </div> -->
         <div class="form-group">
-            <label for="diagnosticCentreName" placeholder="Name">Enter Diagnostic Centre Name</label>
-            <input class="form-control" id="name" required [(ngModel)]="diagnosticCentre.centreName" name="diagnosticCentreName">
+            <label for="diagnosticCentreName">Enter Diagnostic Centre Name</label>
+            <input class="form-control" placeholder="Diagnostic Centre Name" id="name" required [(ngModel)]="diagnosticCentre.centreName" name="centreName" type="text" ngModel pattern="[a-zA-Z ]*" required minlength="4" #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+            <div ng-show="dform.name.$invalid">
+                Diagnostic Centre Name must not contain numbers or special characters.
+            </div>
+            <div *ngIf="name.errors.required">
+                Diagnostic Centre Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+                Diagnostic Centre Name must be at least 4 characters long.
+            </div>
         </div>
+    </div>
         <div class="form-group">
-            <label for="diagnosticCentreAddress" placeholder="Name">Enter Diagnostic Centre Address</label>
-            <input class="form-control" id="name" required [(ngModel)]="diagnosticCentre.centreAddress" name="diagnosticCentreAddress">
+            <label for="diagnosticCentreAddress" >Enter Diagnostic Centre Address</label>
+            <input class="form-control" placeholder="Diagnostic Centre Address" id="name" required minlength="4" required [(ngModel)]="diagnosticCentre.centreAddress" name="diagnosticCentreAddress" #name1="ngModel">
+            <div *ngIf="name1.invalid && (name1.dirty || name1.touched)" class="alert alert-danger">
+                <div *ngIf="name1.errors.required">
+                    Diagnostic Centre Address is required.
+                </div>
+                <div *ngIf="name1.errors.minlength">
+                    Diagnostic Centre Address must be at least 4 characters long.
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn-success" >Submit</button>
+        <button [disabled]="dform.invalid" type="submit" class="btn-success" >Submit</button>
     </form>
+</div>
 </div>
 
 <div [hidden]="!submitted">

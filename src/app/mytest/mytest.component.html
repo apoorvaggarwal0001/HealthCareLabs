@@ -1,11 +1,13 @@
-<h2>All Tests</h2>
+<h1>All Tests</h1>
 
 <table>
     <tr>
-        <td>Test ID</td>
-        <td>Test NAME</td>
-        <td>Test DETAILS</td>
-        <td>Test COST</td>
+        <th>Test ID</th>
+        <th>Test NAME</th>
+        <th>Test DETAILS</th>
+        <th>Test COST</th>
+        <th>Update</th>
+        <th>Delete</th>
     </tr>
     <tr *ngFor="let t of test|async">
         <td>{{t.testId}}</td>

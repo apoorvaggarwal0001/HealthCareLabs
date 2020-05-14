@@ -4,12 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class Customer {
+@Table(name="user1")
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private int id;
 	private String name;
 	private String password;
 	private String gender;
@@ -18,13 +23,22 @@ public class Customer {
 	private String userRole;
 	private long phoneno;
 	
+//	@JsonManagedReference
+//	@OneToOne(mappedBy = "user")
+//    private Appointment appointment;
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
+//	public Appointment getAppointment() {
+//		return appointment;
+//	}
+//	public void setAppointment(Appointment appointment) {
+//		this.appointment = appointment;
+//	}
 	public String getName() {
 		return name;
 	}

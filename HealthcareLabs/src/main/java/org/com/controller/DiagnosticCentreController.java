@@ -31,17 +31,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class DiagnosticCentreController {
 	
 	@Autowired
-	DiagnosticCentreRepositories dao;
-	
-	@Autowired
 	DiagnosticCentreService diagnosticCentreService;
-	
-	@Autowired
-	TestRepositories testDao;
 	
 	@RequestMapping("/allDiagnosticCentres")
 	public List<DiagnosticCentre> getAllDiagnosticCentres(){
 		return diagnosticCentreService.getAllDiagnosticCentres();
+	}
+	
+	@RequestMapping("/allTestsInDiagnosticCentre/{id}")
+	public Set<Test> getAllTestsInDiagnosticCentre(@PathVariable("id") int diagnosticCentreid){
+		return diagnosticCentreService.getAllTestsInDiagnosticCentre(diagnosticCentreid);
 	}
 	
 	@RequestMapping("/searchDiagnosticCentre/{id}")

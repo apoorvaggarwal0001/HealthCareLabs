@@ -1,0 +1,54 @@
+<body>
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <h1 style="margin-left: 230px; color: #95a36f;">Gallery</h1>
+            <div>
+                <div class="col-sm-4">
+                    <img style="width: 600px; height: 450px;" class="mySlides"src="https://i2-prod.hulldailymail.co.uk/article4006542.ece/ALTERNATES/s615/0_253262574.jpg">
+                </div>
+            </div>
+        </div>
+        <div  style=" text-align: center; height: 90vh; width: 50vw; margin-right: 50px;">
+            <h1 style="color: #95a36f;">User Login</h1>
+            <div class="row" align="center" style="height: 60vh;">
+                <div class="col-sm-6" style="background-color: darkturquoise;">
+                    <div style="width: fit-content;">
+                        <h2 >Admin Login</h2>
+                        <div class="container" style="margin-top: 50px;">
+                            <div class="form-group">
+                                <h4>User-Id: </h4>
+                                <input name="id" id="id" [(ngModel)]="id" class="form-control" required>
+                            </div><br>
+                            <div class="form-group">
+                                <h4>Password:</h4>
+                                <input type="password" name="password" id="password" [(ngModel)]="password"
+                                    class="form-control" required>
+                            </div><br>
+                            <button (click)="checkLogin1()" class="btn btn-success">Login</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6" align="center" style="background-color: khaki;">
+                    <div style="width: fit-content;">
+                        <h2>Customer Login</h2>
+                        <!--  <form (ngSubmit)="onSubmit()"> -->
+                        <div class="container" style="margin-top: 50px;">
+                            <div class="form-group">
+                                <h4>User-Id: </h4>
+                                <input name="id" id="id" class="form-control" [(ngModel)]="id" required>
+                            </div><br>
+                            <div class="form-group">
+                                <h4>Password:</h4>
+                                <input type="password" name="password" id="password" class="form-control"
+                                    [(ngModel)]="password" required>
+                            </div><br>
+                            <button (click)="checkLogin2()" class="btn btn-success">Login</button>
+                            &nbsp;&nbsp;
+                            <button class="btn btn-dark" (click)="signUp()">Signup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

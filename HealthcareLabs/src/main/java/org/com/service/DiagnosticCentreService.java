@@ -31,6 +31,12 @@ public class DiagnosticCentreService {
 		return diagnosticCentreDao.findAll();
 	}
 	
+	public Set<Test> getAllTestsInDiagnosticCentre(int diagnosticCentreid){
+		Optional<DiagnosticCentre> findById=diagnosticCentreDao.findById(diagnosticCentreid);
+		DiagnosticCentre diagnosticCentre=findById.get();
+		return diagnosticCentre.getSetOfTests();
+	}
+	
 	public ResponseEntity<?> searchDiagnosticCentre(int diagnosticCentreid) {
 		Optional<DiagnosticCentre> findById=diagnosticCentreDao.findById(diagnosticCentreid);
 		try {

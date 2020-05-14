@@ -6,6 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Appointment {
@@ -13,17 +17,24 @@ public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int appointmentId;
-	private String diagnosticCentreName;
-	private String testName;
+	private int diagnosticCentreId;
+	private int testId;
 	private String date1;
 	private String time1;
 	private float totalCost;
 	private Boolean approved;
 	
-//	@ManyToOne
-//	@JoinColumn(name="diagnosticCentreId")
-//	private DiagnosticCentre diagnosticCentre;
+//	@JsonBackReference
+//	@OneToOne
+//	@MapsId
+//    private User user;
 	
+//	public User getUser() {
+//		return user;
+//	}
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 	public int getAppointmentId() {
 		return appointmentId;
 	}
@@ -55,18 +66,20 @@ public class Appointment {
 	public void setApproved(Boolean approved) {
 		this.approved = approved;
 	}
-	public String getDiagnosticCentreName() {
-		return diagnosticCentreName;
+	
+	public int getDiagnosticCentreId() {
+		return diagnosticCentreId;
 	}
-	public void setDiagnosticCentreName(String diagnosticCentreName) {
-		this.diagnosticCentreName = diagnosticCentreName;
+	public void setDiagnosticCentreId(int diagnosticCentreId) {
+		this.diagnosticCentreId = diagnosticCentreId;
 	}
-	public String getTestName() {
-		return testName;
+	public int getTestId() {
+		return testId;
 	}
-	public void setTestName(String testName) {
-		this.testName = testName;
+	public void setTestId(int testId) {
+		this.testId = testId;
 	}
+	
 	
 
 //	@Override

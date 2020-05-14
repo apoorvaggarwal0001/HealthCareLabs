@@ -27,8 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 @CrossOrigin("http://localhost:4200")
 public class TestController {
-	@Autowired
-	TestRepositories dao;
 	
 	@Autowired
 	private TestService testService;
@@ -66,6 +64,10 @@ public class TestController {
 		return testService.updateTest(test);
     }
 	
+	@RequestMapping("/testCost/{id}")
+	public float getTestCost(@PathVariable("id") Integer tid) {
+		return testService.getTestCost(tid);
+	}
 }
 
 //@PostMapping("/addTest")
